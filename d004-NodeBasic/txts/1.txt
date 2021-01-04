@@ -1,0 +1,7 @@
+Content in the 1.txt file
+
+中文测试，如果没有合适的encoding 标准，中文不能正常显示
+
+Much of the Node.js core API is built around an idiomatic asynchronous event-driven architecture in which certain kinds of objects (called "emitters") emit named events that cause Function objects ("listeners") to be called.
+
+For instance: a net.Server object emits an event each time a peer connects to it; a fs.ReadStream emits an event when the file is opened; a stream emits an event whenever data is available to be read.

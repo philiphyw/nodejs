@@ -1,0 +1,29 @@
+<html lang="en">
+      <!-- apply ejs partial - head.ejs -->
+      <%- include('./partials/head.ejs')%>
+  <body>
+      <!-- apply ejs partial - nav.ejs -->
+      <%-include('./partials/nav.ejs')%>
+
+    <div class="container">
+    <!-- Content in main container -->
+    <div class="blogs content"><h2>All Blogs</h2>
+    <% if(blogs.length>0){ %>
+      
+      <% blogs.forEach(e => { %>
+
+        <h3 class='title'><%= e.title %></h3>
+        <p class='snippet'><%= e.snippet %></p>
+        <% }) %>
+
+        
+      <% } else {%>
+        <p class="snippet">No blogs to display.</p>
+        <% } %>
+    </div>
+  
+  </div>
+        <!-- apply ejs partial - footer.ejs -->
+        <%-include('./partials/footer.ejs')%>
+  </body>
+</html>
