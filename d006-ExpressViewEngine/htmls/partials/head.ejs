@@ -2,47 +2,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EJS View Page | <%=title%></title>
-  <style>
-    @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap");
-    body {
-      margin: 20px auto;
-      padding: 0 20px;
-      background-color: #222222;
-      color: white;
-      font-family: "Open Sans", serif;
-    }
-
-    .footer{
-        color:#777;
-    }
-
-    a {
-      text-decoration: none;
-    }
-
-    a:visited {
-      color: inherit;
-    }
-
-    ul {
-        padding: 0;
-        list-style: none;
-        align-items: flex-end;
-    }
-
-    .navbar{
-        display: flex;
-        gap: 2rem;
-        border-bottom: 3px solid lightsalmon;
-    }
-
-    .navbar ul li:hover{
-        color: lightsalmon;
-    }
-
-    .container{
-        background-color: #ffffff;
-        color: #222222;
-    }
-  </style>
+  <!-- below style.css link is automatically pointing to the public folder 
+  because in the ejs.js file, there's a line app.use(express.static('public')) to make the public folder static
+  so we don't need to specific the relative path href="../../public/style.css"
+-->
+  <link rel="stylesheet" href="/style.css">
 </head>

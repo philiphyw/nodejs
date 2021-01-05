@@ -29,7 +29,7 @@ app.use((req, res,next) => {
 
 //app.use(express.static(target folder)), this express built-in middleware will make a folder static, which
 //will make files in this folder as static files and available to the front end.
-app.use(express.static('public'));
+app.use(express.static('public'));//with this code, partials head.ejs can link the css file in the public folder
 
 //app.use(morgan()), as a 3rd party middleware, can act as a logger to replace above app.use((req, res,next) logger
 app.use(morgan('common'));
