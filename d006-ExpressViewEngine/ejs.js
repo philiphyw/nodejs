@@ -2,16 +2,24 @@
 const express = require("express");
 //morgan is a 3rd party middleware
 const morgan = require('morgan') ;
+//mongoose is a ODM library to interact with MongoDB
+const mongoose = require('mongoose');
 
 //express app
 const app = express();
 
+//connect to mongodb
+const dbURI = 'mongodb+srv://ph217531:1234qweR@expressjs.m52hd.mongodb.net/<dbname>?retryWrites=true&w=majority'
+// the second para '{useNewUrlParser:true, useUnifiedTopology:true}' is optional, to remove a warning message
+mongoose.connect(dbURI,{useNewUrlParser:true, useUnifiedTopology:true})
+.then((result)=> console.log('connected to the db'))
+.then((result)=>app.listen(3000))//use this line to make sure the app finish connectting to DB first, then start to listen the port for request
+.catch((err)=>console.log(err));
 //register view engine
 app.set("view engine", "ejs");
 app.set("views", "htmls"); // if the htmls are stored in a folder called 'views', then this line is no longer needed.
 
-//listen for requests
-app.listen(3000);
+
 
 
 //a middleware as a logger to record requests info
