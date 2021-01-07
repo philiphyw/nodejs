@@ -13,7 +13,9 @@
       <% blogs.forEach(e => { %>
 
         <h3 class='title'><%= e.title %></h3>
+        <p class="last-update">Last Update:<%= e.updatedAt%></p>
         <p class='snippet'><%= e.snippet %></p>
+        <p class='body'><%= e.body %></p>
         <% }) %>
 
         

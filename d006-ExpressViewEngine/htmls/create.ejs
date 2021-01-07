@@ -8,13 +8,14 @@
     <!-- content in main container -->
     <div class="container">
       <div class="create-blog content">
-        <form action="">
+        <form action="/blogs" method='POST'>
           <label for="title">Blog title:</label>
-          <input type="text" name="" id="title" required />
+          <!-- in order to add data to the corresponding field of the data object, need to add the field names in the input.name  -->
+          <input type="text" name="title" id="title" required />
           <label for="snippet">Blog snippet:</label>
-          <input type="text" name="" id="snippet" required />
+          <input type="text" name="snippet" id="snippet" required />
           <label for="body">Blog body:</label>
-          <textarea id="body" required><textarea></textarea>
+          <textarea id="body" name="body" required></textarea>
           <button>Submit</button>
         </form>
       </div>

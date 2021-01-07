@@ -39,3 +39,26 @@
         background-color: #ffffff;
         color: #222222;
     }
+
+    .create-blog form{
+      display: grid;
+      grid-template-rows: 1fr;
+      color: orangered;
+      max-width: 500px;
+      row-gap: 1rem;
+      margin: auto;
+    }
+
+    .create-blog form input{
+      height: 20px;
+    }
+
+
+    .create-blog form button{
+      background-color: orangered;
+      color: white;
+      font-size: 1rem;
+      width: 100px;
+      margin: auto;
+      border: none;
+    }

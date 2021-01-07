@@ -38,6 +38,9 @@ app.use((req, res,next) => {
 });
 */
 
+
+
+
 //app.use(express.static(target folder)), this express built-in middleware will make a folder static, which
 //will make files in this folder as static files and available to the front end.
 app.use(express.static('public'));//with this code, partials head.ejs can link the css file in the public folder
@@ -45,15 +48,19 @@ app.use(express.static('public'));//with this code, partials head.ejs can link t
 //app.use(morgan()), as a 3rd party middleware, can act as a logger to replace above app.use((req, res,next) logger
 app.use(morgan('common'));
 
+//express.urlencoded, this built-in middleware will parse the data which was posted by html form in to an object
+app.use(express.urlencoded({extended:true}));
+
+
 //mongoose and mongo sandbox toutes
 //request='/add-blog', save a blog object to the mongoDB
+/*
 app.get('/add-blog',(req,res)=>{
   const blog = new Blog({//the mongoose model Blog, as defined in the blgSchema, has 3 properties: title,snippet,body
     title:'new blog2 has a title',
     snippet:'new blog2 has a snippet',
     body:'new blog2 also has a body'
   })
-
   //mongoose blog.save()method to save above blog instance to the data base 
   blog.save()
   .then((result)=>{
@@ -63,14 +70,15 @@ app.get('/add-blog',(req,res)=>{
     console.log(err)
   });
 })
+*/
 
 //request='/all-blog', get all blog object from the mongoDB
 app.get('/all-blogs',(req,res)=>{
-  Blog.find().sort({createdAt:-1})//find all Blog module from the collection in mongoDB, use createdAt value to sort, -1 = descending
+  Blog.find().sort({updatedAt:-1})//find all Blog module from the collection in mongoDB, use updatedAt value to sort, -1 = descending
   .then((result)=>{
     //res.send(result);//after get all the Blog object from the db, send them to the browser
     res.render("index", {title:'Home', blogs:result});
-    
+    console.log(result)
   })
   .catch((err)=>{
     console.log(err);
@@ -121,6 +129,21 @@ app.get("/about", (req, res) => {
 app.get("/blogs/create", (req, res) => {
   res.render("create",{title:'Create New Blog'});
 });
+
+
+app.post('/blogs',(req,res)=>{
+//since we add the middleware express.urlencoded, the data from the html form will be parsed into an object, so the post method will feed an object to the server
+const newBlog = new Blog(req.body);//create a new Blog instance to rec the object from the POST method
+console.log('The new posted blog is :',newBlog);
+newBlog.save()//save the new instance to the database
+.then((result)=>{
+//after user submitted a new blog to the server, redirect the browser to the homepage to show the new blog
+res.redirect('/all-blogs')
+})
+.catch((err)=>{
+  console.log(err);
+})
+})
 
 
 //a middleware to return a 404 page
