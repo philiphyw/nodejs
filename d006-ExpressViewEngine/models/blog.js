@@ -18,3 +18,6 @@ const blogSchema = new Schema({
 
 //a model is to 
 const Blog = mongoose.model('Blog',blogSchema)
+
+//export the Blog model
+module.exports = Blog;
