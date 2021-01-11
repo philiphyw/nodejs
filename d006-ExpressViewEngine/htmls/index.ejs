@@ -11,13 +11,13 @@
     <% if(blogs.length>0){ %>
       
       <% blogs.forEach(e => { %>
-
+        <div class="blog-detail">
         <h3 class='title'><%= e.title %></h3>
-        <p class="last-update">Last Update:<%= e.updatedAt%></p>
+        <p class="updated-at">Last Update:<%= e.updatedAt.toLocaleString()%></p>
         <p class='snippet'><%= e.snippet %></p>
         <p class='body'><%= e.body %></p>
         <% }) %>
-
+      </div>
         
       <% } else {%>
         <p class="snippet">No blogs to display.</p>
